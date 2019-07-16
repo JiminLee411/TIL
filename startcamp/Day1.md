@@ -242,9 +242,192 @@ bool('')
   """)
   ```
 
+
+##### 이스케이프 문자열
+
+문자열을 활용하는 경우 특수문자 혹은 ㅈ작을 하기 위하여 사용되는 것으로 `\` 를 활용하여 이를 구분한다.
+
+```python
+print('줄바꿈\n탭\t탭\n\\')
+```
+
+* print를 하는 과정에서도 이스케이프 문자열을 활용 가능합니다.
+
+  ```python
+  print('내용을 옆으로 띄어서 표현하고 싶다면,',end='\t')
+  print('탭탭')
+  # => 내용을 옆으로 띄어서 표현하고 싶다면,    탭탭
   
+  # 물론, end 옵션은 이스케이프 문자열이 아닌 다른 것도 가능합니다.
+  print('개행문자 말고 다른 것도 되는데', end='...')
+  print('진짜로', end='!')
+  # => 개행문자 말고 다른 것도 되는데...진짜로!
+  ```
 
+##### String interpolation
 
+1) `%-formatting`
+
+```python
+name = '홍길동'
+'Hello, %s' % name
+```
+
+2) `str.format()`
+
+```python
+'Hello, {}'.format(name)
+```
+
+3) `f-strings` 
+
+```python
+f'Hello, {name}'
+```
+
+4) `+` 연산자 이용
+
+```python
+'Hello, ' + name
+```
+
+* f-stings에서는 형식을 지정할 수 있으며,
+
+  ```python
+  # 다양한 형식을 활용하기 위해 datetime 모듈로 오늘을 표현
+  import datetime
+  today = datetime.datetime.now()
+  print(today)
+  print(type(today))
+  f'오늘은 {today:%Y}년 {today:%m}월 {today:%d}일입니다. {today:%A}입니다. {today:%H}:{today:%M}:{today:%S}'
+  # => 오늘은 2019년 07월 15일입니다. Monday입니다. 13:32:13
+  ```
+
+* 연산과 출력형식 지정도 가능하다.
+
+  ```python
+  # string interpolation에서 연산과 숫자 출력형식을 지정해봅시다.
+  pi = 3.141592
+  f'원주율은 {pi:.2f}이고, 원의 면적은 {pi*2*2}'
+  ```
+
+#### 연산자
+
+##### 산술연산자
+
+* 제곱
+
+  ```python
+  # 2의 1000승을 확인해봅시다.
+  2**1000
+  ```
+
+* 나눗셉
+
+  ```PYTHON
+  # 나눗셈과 관련된 산술연산자를 활용해봅시다.
+  print(5 / 2)
+  print(5 // 2) # 몫
+  print(5 % 2) # 나머지 (modulo)
+  print(int(5/2))
+  ```
+
+  ```python
+  # divmod는 나눗셈과 관련된 함수입니다.
+  print(divmod(5, 2)) # (몫, 나머지)
+  quotient, remainder = divmod(5, 2)
+  print(f'몫은 {quotient}, 나머지는 {remainder}이다.')
+  ```
+
+* 양/음수 표현
+
+  ```python
+  # 음수 양수 표현도 해봅시다.
+  positive_num = 4
+  negative_num =-4
+  print(negative_num)
+  print(-negative_num)
+  ```
+
+##### 논리연산자
+
+* 파이썬에서 and는 a가 거짓이면 a를 리턴하고, 참이면 b를 리턴한다.
+
+* 파이썬에서 or은 a가 참이면 a를 리턴하고, 거짓이면 b를 리턴한다.
+
+  ```python
+  # and의 단축평가(short-circuit evaluation)에 대해서 알아봅시다.
+  print(3 and 5) # 5
+  print(3 and 0) # 0
+  print(0 and 3) # 0
+  print(0 and []) # 0
+  ```
+
+  ```python
+  # or의 단축평가(short-circuit evaluation)에 대해서 알아봅시다.
+  print(5 or 3) # 5
+  print(3 or 0) # 3
+  print(0 or 3) # 3
+  print(0 or []) # []
+  ```
+
+##### 기타연산자
+
+* **Concatenation** : 숫자가 아닌 자료형은 `+` 연산자를 통해 합칠 수 있다.
+
+  ```python
+  # 문자열끼리 더해봅시다.(합쳐봅시다.)
+  'Hi, ' + 'Ssafy'
+  # => 'Hi, Ssafy'
+  
+  # list끼리 더해봅시다.(합쳐봅시다.)
+  [1, 2, 3] + ['회', '초밥']
+  # => [1, 2, 3, '회', '초밥']
+  ```
+
+* **Containment Test** : `in` 연산자를 통해 속해있는지 여부를 확인한다.
+
+  ```python
+  # 문자열안에 특정한 문자가 있는지 확인해봅시다.
+  'a' in 'apple' # True
+  
+  # list안에 특정한 원소가 있는지 확인해봅시다.
+  'hi'in [1, 2, 'hi'] # True
+  
+  # range안에 특정한 원소가 있는지 확인해봅시다.
+  5 in range(1, 5) # False
+  ```
+
+* **Identity** : `is` 연산자를 통해 동일한 object인지 확인할 수 있다.
+
+  ```python
+  # 파이썬에서 -5부터 256까지의 id는 동일합니다.
+  # 속도 향상 => 가장 많이 찾는 수의 id 값을 고정하여 메모리로 안찾아가도 됨.
+  a = 3
+  b = 3
+  print(a == b) # True
+  print( a is b) # True
+  print(id(a), id(b)) # 계속 실행해도 id 고정
+  
+  c = 257
+  d = 257
+  print(c == d) # True
+  print( c is d) # False
+  print(id(c), id(d)) # 실행할때마다 id 계속 바뀜
+  ```
+
+* **Indexing/Slicing** : `[]`를 통한 값 접근  및 `[:]` 을 통한 슬라이싱
+
+  ```python
+  'hi'[0] # 'h'
+  'hi'[-1] # 'i'
+  [1, 2, 3][-1] # 3
+  [0, 1, 2][0:1] # [0]
+  [0, 1, 2][1:3] # [1, 2]
+  [0, 1, 2][2:3] # [2]
+  ```
+
+  
 
 1. 저장
 
