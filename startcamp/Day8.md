@@ -149,10 +149,54 @@ decimal -> digit -> numeric 이렇게 포함됨
 리스트에 값을 추가할 수 있다.
 
 ```python
-
+caffe = ['starbucks', 'tomntoms', 'hollys']
+print(caffe) # => ['starbucks', 'tomntoms', 'hollys']
+caffe.append('삼성화재연수원 카페')
+caffe[len(caffe):] = ['ediya']
+print(caffe) # => ['starbucks', 'tomntoms', 'hollys', '삼성화재연수원 카페', 'ediya']
+caffe[len(caffe):] # => []
 ```
 
 
+
+#### 2.1.2 `.extend(iterable)`
+
+리스트에 iterable(list, range, tuple, string*유의*)값을 붙일 수가 있습니다.
+
+```python
+# 앞서 만든 리스트에 추가해봅시다.
+caffe.extend(['카페베네'])
+print(caffe)
+# => ['starbucks', 'tomntoms', 'hollys', '삼성화재연수원 카페', 'ediya', '카페베네']
+
+# 앞서 배운 list concatenate와 동일합니다.
+caffe.extend(['빽다방', '설빙'])
+print(caffe) 
+# => ['starbucks', 'tomntoms', 'hollys', '삼성화재연수원 카페', 'ediya', '카페베네', '빽다방', '설빙', '드롭탑']
+
+# append와 비교해봅시다.
+caffe.append(['동네카페'])
+print(caffe)
+# => ['starbucks', 'tomntoms', 'hollys', '삼성화재연수원 카페', 'ediya', '카페베네', '빽다방', '설빙', '드롭탑', ['동네카페']]
+
+caffe.extend('커피그루나루')
+print(caffe)
+# => ['starbucks', 'tomntoms', 'hollys', '삼성화재연수원 카페', 'ediya', '카페베네', '빽다방', '설빙', '드롭탑', ['동네카페'], '커', '피', '그', '루', '나', '루']
+
+a = '안녕하세요, 여러분'
+a.split() # => ['안녕하세요,', '여러분']
+
+b = '안녕하세요, 여러분'
+result = []
+result.extend(b)
+result # => ['안', '녕', '하', '세', '요', ',', ' ', '여', '러', '분']
+```
+
+
+
+#### 2.1.3 `insert(i, x)`
+
+정해진 위치 `i` 에 값을 추가합니다.
 
 
 
