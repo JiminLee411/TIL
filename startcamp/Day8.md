@@ -149,12 +149,12 @@ decimal -> digit -> numeric 이렇게 포함됨
 리스트에 값을 추가할 수 있다.
 
 ```python
-caffe = ['starbucks', 'tomntoms', 'hollys']
-print(caffe) # => ['starbucks', 'tomntoms', 'hollys']
-caffe.append('삼성화재연수원 카페')
-caffe[len(caffe):] = ['ediya']
-print(caffe) # => ['starbucks', 'tomntoms', 'hollys', '삼성화재연수원 카페', 'ediya']
-caffe[len(caffe):] # => []
+cafe = ['starbucks', 'tomntoms', 'hollys']
+print(cafe) # => ['starbucks', 'tomntoms', 'hollys']
+cafe.append('삼성화재연수원 카페')
+cafe[len(cafe):] = ['ediya']
+print(cafe) # => ['starbucks', 'tomntoms', 'hollys', '삼성화재연수원 카페', 'ediya']
+cafe[len(cafe):] # => []
 ```
 
 
@@ -165,22 +165,22 @@ caffe[len(caffe):] # => []
 
 ```python
 # 앞서 만든 리스트에 추가해봅시다.
-caffe.extend(['카페베네'])
-print(caffe)
+cafe.extend(['카페베네'])
+print(cafe)
 # => ['starbucks', 'tomntoms', 'hollys', '삼성화재연수원 카페', 'ediya', '카페베네']
 
 # 앞서 배운 list concatenate와 동일합니다.
-caffe.extend(['빽다방', '설빙'])
-print(caffe) 
+cafe.extend(['빽다방', '설빙'])
+print(cafe) 
 # => ['starbucks', 'tomntoms', 'hollys', '삼성화재연수원 카페', 'ediya', '카페베네', '빽다방', '설빙', '드롭탑']
 
 # append와 비교해봅시다.
-caffe.append(['동네카페'])
-print(caffe)
+cafe.append(['동네카페'])
+print(cafe)
 # => ['starbucks', 'tomntoms', 'hollys', '삼성화재연수원 카페', 'ediya', '카페베네', '빽다방', '설빙', '드롭탑', ['동네카페']]
 
 caffe.extend('커피그루나루')
-print(caffe)
+print(cafe)
 # => ['starbucks', 'tomntoms', 'hollys', '삼성화재연수원 카페', 'ediya', '카페베네', '빽다방', '설빙', '드롭탑', ['동네카페'], '커', '피', '그', '루', '나', '루']
 
 a = '안녕하세요, 여러분'
@@ -197,6 +197,47 @@ result # => ['안', '녕', '하', '세', '요', ',', ' ', '여', '러', '분']
 #### 2.1.3 `insert(i, x)`
 
 정해진 위치 `i` 에 값을 추가합니다.
+
+```python
+cafe.insert(0, 'hi') # 맨 앞에 추가된다.
+cafe.insert(-1, 'bye') # 맨 뒤가 아닌 하나 전에 추가된다.
+cafe.insert(len(cafe), 'real') # 이렇게 해야 맨 뒤에 추가
+cafe.insert(len(cafe)+1000, 'nope') # 길이를 넘어서는 인덱스는 무조건 마지막에 하나만 붙는다.
+```
+
+
+
+#### 2.1.4 `remove(x)`
+
+리스트에서 값이 x인 것을 삭제한다.
+
+```python
+numbers = [1, 2, 3, 1, 2]
+numbers.remove(1) # [2, 3, 1, 2]
+numbers.remove(1) # [2, 3, 2]
+numbers.remove(1) # 에러가 발생한다.
+```
+
+
+
+#### 2.1.5 `.pop(i)`
+
+정해진 위치 `i` 에 있는 값을 삭제하며, 그 항복을 반환한다.
+
+`i` 가 지정되지 않으면 마지막 항목을 삭제하고 되돌려준다.
+
+```python
+a = [1, 2, 3, 4, 5, 6]
+a.pop(0) # 1
+a # [2, 3, 4, 5, 6]
+member = ['연용흠', '박태수', '염동환', '토마스']
+bye_member = member.pop() # 아무값도 안넣으면 가장 마지막 원소 pop
+print(f'{bye_member}님 이용해주셔서 감사합니다.')
+```
+
+
+
+### 2.2 탐색 및 정렬
 
 
 
