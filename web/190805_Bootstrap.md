@@ -1,4 +1,4 @@
-# Bootstrab
+# Bootstrap
 
 > 더욱 간결한 방식으로 나타낸다.
 
@@ -10,11 +10,11 @@
 * 외부 서버를 활용함으로써 본인 서버의 부하가 적어짐.
 * CDN은 보통 적절한 수준의 캐시 설정으로 빠르게 로딩할 수 있음.
 
-
+* [intro](C:\Users\student\Desktop\Jimin\web\bootstrap\01_intro.html) 
 
 ### Utilities
 
-1. Spacing
+1. [Spacing](C:\Users\student\Desktop\Jimin\web\bootstrap\02_spacing.html) 
 
    `.m-0` : `margin:0;`
 
@@ -34,7 +34,7 @@
 
      
 
-2. Color
+2. [Color](C:\Users\student\Desktop\Jimin\web\bootstrap\03_color.html) 
 
    ![](C:\Users\student\Desktop\Jimin\TIL\web\img\bg-color.PNG)
 
