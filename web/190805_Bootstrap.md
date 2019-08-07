@@ -16,6 +16,10 @@
 
 1. [Spacing](C:\Users\student\Desktop\Jimin\web\bootstrap\02_spacing.html) 
 
+   * 단축키
+     * `m` : margin,`p` : padding
+     * `t` : top, `b` : bottom, `l` : left, `r` : right, `x` : left, right, `y` : top, bottom
+
    `.m-0` : `margin:0;`
 
    `.mr-0` :  `margin-right:0;`
@@ -26,17 +30,25 @@
 
    `.mt-1`: `margin-top: 0.25rem` -> 4px (브라우저 기본 rem은 16px이므로!)
 
-   ![](C:\Users\student\Desktop\Jimin\TIL\web\img\py-0.PNG)
+   
 
    * 음수도 가능하다.
 
-     ![](C:\Users\student\Desktop\Jimin\TIL\web\img\margin_음수.PNG)
+     `0` : 0			0px
 
+     `n1` : -0.25	-4px
+     
+     `n2` : -0.5	  -8px
+     
+     `n3` : -1 		-16px
+     
+     `n4` : -1.5	  -24px
+     
+     `n5` : -3		 -48px
+     
      
 
 2. [Color](C:\Users\student\Desktop\Jimin\web\bootstrap\03_color.html) 
-
-   ![](C:\Users\student\Desktop\Jimin\TIL\web\img\bg-color.PNG)
 
    * 다양한 활용법
 
@@ -47,18 +59,23 @@
 
      
 
-3. Border
+3. Border (경계선 설정)
 
-   * 활용법
+   * 활용법 (색 및 형태)
 
      * `border-color:'__color name__'`
-     * `.rounded-` -> rounded-circle, rounded-pill
+     * `.rounded-` -> rounded-circle, rounded-pill, rounded-top
 
      
 
-4. Display
+4. Display( 해당 위치 배경에 색을 넣어준다.)
 
-   ![](C:\Users\student\Desktop\Jimin\TIL\web\img\display.PNG)
+   ```html
+   <div class="d-inline bg-info rounded">인라인인라인</div>
+   <div class="d-block bg-info rounded">인라인인라인</div>
+   ```
+
+   d-inline 해당 값의 크기 만큼만 색을 할당시킨다.
 
    
 
