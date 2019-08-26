@@ -475,7 +475,42 @@ text에서 패턴이 등장하는 모든 위치를 찾는 문제
 
 ## 5. 스택2
 
+### 5.1.1 계산기
 
+중위표현식 -> 후위표현식으로 변경
+
+### 5.1.2 백트래킹
+
+- 백트래킹 : 해를 찾는 도중에 막히면 되돌아가서 다시 해를 찾아가는 기법
+
+  -> 최적화(optimization) 문제와 결정(decision) 문제를 해결할 수 있다.
+
+- 결정문제 : 문제의 조건을 만족하는 해의 존재 여부를 '1' or '0'으로 답하는 문제
+
+  - 미로찾기, n-Queen 문제, Map colring, 부분집합의 합
+    - 깊이우선탐색 : 모든 경로 추적 -> 경우의 수 많음
+    - 백트래킹 : 불필요한 경로 조기 차단 -> 최악의 경우에는 깊이우선탐색과 동일.
+
+- 일반 백트래킹 알고리즘
+
+  ```python
+  def checknode(v): # node
+      if promising(v):
+          if there is a solution at v:
+              write the solution
+          else:
+              for u in each child of v:
+                  checknode(u)
+  ```
+
+  
+
+### 5.1.3 분할정복
+
+- 설계 전략
+  - 분할(Divide)
+  - 정복(Conqure)
+  - 통합(Combine)
 
 
 
