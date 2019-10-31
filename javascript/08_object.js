@@ -32,7 +32,7 @@ let bag = {
 }
 
 // JSON (Javascript object notation - 자바스크립트 오브젝트 표기법)
-// 문자열
+// 자바스크립트 오브젝트 표기법을 가진 문자열이다.
 // object -> JSON
 let jsonData = JSON.stringify(me)
 let myObject = JSON.parse(jsonData)

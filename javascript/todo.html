@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>오늘의 할일</title>
+</head>
+<body>
+  <h1 id="title">Todo List</h1>
+  <h2><div id="time"></div></h2>
+  <h3></h3>
+  <form action="" id='form'>
+    <label for="input"><h1>Do IT!</h1></label>
+    <input type="text" id="input">
+    <button id="input-button">+</button>
+  </form>
+  <ol id="todo-list"></ol>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    // const todo = document.querySelector('#input')
+    const form = document.querySelector('#form')
+    const button = document.querySelector('#input-button')
+    const todos = document.querySelector('#todo-list')
+    let num = 0
+    axios.get('https://source.unsplash.com/1920x1080/?nature,water')
+      .then(response => {
+        document.body.style.backgroundImage = `url(${response.request.responseURL})`
+        document.body.style.backgroundSize = 'auto'
+        document.body.style.backgroundPosition = 'center'
+        document.body.style.backgroundRepeat = 'no-repeat'
+      })
+    form.addEventListener("click", function (event) {
+      event.preventDefault()
+      const todo = event.target.previousElementSibling
+      if (todo.value) {
+        const li = document.createElement('li')
+        // console.log(event.target) // 이벤트가 발생한 대상
+        // console.log(this) // 이벤트가 발생한 대상 / arrow ft에서는 this는 window
+        
+        const delButton = document.createElement('button')
+        delButton.innerText = '완료'
+        delButton.style.marginLeft = '10px'
+        delButton.addEventListener("click", function (event) {
+          console.log(event.target.parentElement)
+          event.target.parentElement.remove()
+          
+        })
+
+        li.innerText = todo.value
+        li.appendChild(delButton)
+        todo.value = ""
+        todos.appendChild(li)
+      }
+    })
+    // const delButton = document.querySelectorAll('.delete-button')
+    // console.log(delButton.li)
+    // delButton.addEventListener("click", function (event) {
+    //   console.log(this)
+    // })
+    function checkTime(i) {
+      if (i < 10) {
+        i = "0" + i;
+      }
+      return i;
+    }
+
+    function startTime() {
+      var today = new Date();
+      var d = today.getDate();
+      var dd = today.getDay();
+      var mm = today.getMonth() + 1;
+      var h = today.getHours();
+      var m = today.getMinutes();
+      var s = today.getSeconds();
+      // add a zero in front of numbers<10
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('time').innerHTML = h + ":" + m + ":" + s + ',' + mm + '/' + d;
+      t = setTimeout(function() {
+        startTime()
+      }, 500);
+    }
+    startTime();
+  </script>
+</body>
+</html>
