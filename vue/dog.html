@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>멍멍이야옹이</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <button v-on:click="changeImage()">멍멍이</button>
+    <p>{{ count }}</p>
+    <br>
+    <img v-for="image in images" v-bind:src="image" alt="" width="300px">
+  </div>
+  <script>
+    const app = new Vue ({
+      el: "#app",
+      data: {
+        images: [],
+        count: 0
+      },
+      methods: {
+        changeImage: function() {
+          // 요청 보내서 가지고 오면,
+          axios
+            .get('https://dog.ceo/api/breeds/image/random')
+            .then(response => {
+              this.images.push(response.data.message) // window : function, vue(app) : arrow function
+              this.count++
+              }) 
+          // image URL을 변경
+        }
+      }
+    })
+  </script>
+</body>
+</html>
