@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="colorChange()">
+            Toggle
+        </button>
+        <h4 :style="color">
+           빨강과 파랑을 섞으면 보라색이 됩니다.
+        </h4>
+        <button v-on:click="UpCounter">
+          +1
+        </button>
+        <h2>
+            Counter: {{ counter }}
+        </h2>
+        <li v-for="number in numbers" v-if="number%2===0">{{ number }}</li>
+    </div>
+    <script>
+      const app = new Vue({
+            el: '#app',
+            data: {
+                counter:0,
+                numbers:[0,1,2,3,4,5,6,7,8,9],
+                color:'color:red',
+            },
+            methods: {
+                UpCounter: function() {
+                    this.counter++
+                },
+                colorChange: function() {
+                  if (this.color === 'color:red') {
+                    this.color = 'color:blue'
+                  } else {
+                    this.color = 'color:red'
+                  }
+                }
+            }
+        })
+    </script>
+  </body>
+</html>
