@@ -9,19 +9,32 @@
 </head>
 <body>
   <div id="app">
-    <input type="text" v-model="newTodo">
-    <button @click="addTodo">추가</button>
-    <li v-for="todo in todos" :key="todo.id">
-      {{ todo.content }}
-      <button @click="removeTodo(todo.id)" >완료!</button>
-    </li>
+    <h1>Jimin's Todo</h1>
+    <todo-list category="취업준비"></todo-list><br>
+    <todo-list category="싸피"></todo-list><br>
+    <todo-list category="개인"></todo-list>
   </div>
   <script>
-    const app = new Vue ({
-      el: "#app",
-      data: {
-        newTodo: '',
-        todos: [],
+    // 전역 컴포넌트 선언부
+    Vue.component('todo-list', {
+      template: `<div class="todo-list">
+        <h2>{{category}}</h2>
+        <input v-model="newTodo" type="text">
+        <button @click="addTodo">추가</button>
+        <li v-for="todo in todos" :key="todo.id">
+          {{ todo.content }}
+          <button @click="removeTodo(todo.id)" >완료!</button>
+        </li>
+      </div>`,
+      props: { // 하위 컴포넌트로 데이터 전송
+        category: String,
+        required: true,
+      },
+      data: function() {
+        return {
+          todos: [],
+          newTodo: '',
+        }
       },
       methods: {
         addTodo () {
@@ -36,7 +49,13 @@
             return todo.id !== removeTodoId
           })
         }
-      }
+      },
+    })
+  </script>
+  <script>
+    // 루트 오브젝트
+    const app = new Vue ({
+      el: "#app"
     })
   </script>
 </body>
