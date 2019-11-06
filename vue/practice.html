@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Todo (Vue 복습)</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="newTodo">
+    <button @click="addTodo">추가</button>
+    <li v-for="todo in todos" :key="todo.id">
+      {{ todo.content }}
+      <button @click="removeTodo(todo.id)" >완료!</button>
+    </li>
+  </div>
+  <script>
+    const app = new Vue ({
+      el: "#app",
+      data: {
+        newTodo: '',
+        todos: [],
+      },
+      methods: {
+        addTodo () {
+          console.log(this.newTodo)
+          this.todos.push({ id: Date.now(), content: this.newTodo })
+          console.log(this.todos)
+          this.newTodo = ''
+        },
+        removeTodo (removeTodoId) {
+          console.log(removeTodoId)
+          this.todos = this.todos.filter(todo => {
+            return todo.id !== removeTodoId
+          })
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input v-model="message" type="text">
+    <input v-model.trim="message" type="text"> <!-- .trim : 공백 자르기-->
+    <input v-model.number="number" type="number">
+    <select v-model="select"> <!-- v-model="select" -> option의 value값이 select에 저장된다-->
+    <!-- <select v-model="jimin.lovely"> option에 따라 jimin의 lovely의 값이 바뀐다 -->
+      <option value="1">댕댕이</option>
+      <option value="2">냐옹이</option>
+      <option value="3">두루미</option>
+    </select>
+    <input v-model="checked" type="checkbox">
+    <br>
+    <label for="water">물</label>
+    <input v-model="type" value="water" type="radio" id="water">
+    <label for="fire">불</label>
+    <input v-model="type" value="fire" type="radio" id="fire">
+    <label for="green">풀</label>
+    <input v-model="type" value="green" type="radio" id="green">
+  </div>
+  <script>
+    const app = new Vue ({
+      el: "#app",
+      data: {
+        jimin: {
+          lovely: ''
+        },
+        message: '',
+        number: 0,
+        select: '',
+        checked: true,
+        type: '',
+      }
+    })
+  </script>
+</body>
+</html>
